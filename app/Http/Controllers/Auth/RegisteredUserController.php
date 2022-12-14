@@ -9,7 +9,9 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 use Illuminate\Validation\Rules;
+use ParagonIE\CipherSweet\Exception\BlindIndexNotFoundException;
 
 class RegisteredUserController extends Controller
 {
@@ -34,13 +36,22 @@ class RegisteredUserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => ['required', 'string', 'max:255'],
+            'firstname' => ['required', 'string', 'max:255'],
+            'lastname' => ['required', 'string', 'max:255'],
+            'contact' => ['required', 'numeric', 'digits:11'],
+            'birthday' => ['required', 'string', 'date', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
         $user = User::create([
-            'name' => $request->name,
+            'userId' => $this->generateUserID(),
+            'firstname' => $request->firstname,
+            'lastname' => $request->lastname,
+            'contact' => $request->contact,
+            'birthday' => $request->birthday,
+            'two_factor_secret' => null,
+            'is_2fa_enabled' => 0,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
@@ -50,5 +61,23 @@ class RegisteredUserController extends Controller
         Auth::login($user);
 
         return redirect(RouteServiceProvider::HOME);
+    }
+
+    public function userIDExists($id)
+    {
+        try {
+            return User::whereBlind('userId', 'userId_index', $id)->first();
+        } catch (BlindIndexNotFoundException $th) {
+            return false;
+        }
+    }
+
+    public function generateUserID()
+    {
+        $id = uniqid();
+        if (User::firstWhere('userId', $id)) {
+            $this->generateUserID();
+        }
+        return $id;
     }
 }

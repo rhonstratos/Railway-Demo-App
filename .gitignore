@@ -1,4 +1,5 @@
 /node_modules
+/public/build
 /public/hot
 /public/storage
 /storage/*.key
@@ -6,8 +7,27 @@
 .env
 .env.backup
 .phpunit.result.cache
-docker-compose.override.yml
 Homestead.json
 Homestead.yaml
+auth.json
 npm-debug.log
 yarn-error.log
+#custom
+import
+/.idea
+/.vscode
+/.cspell
+~/.bashrc
+~
+~/.zshrc
+/tests/Feature/Auth
+/public/css
+/public/js
+/public/assets
+/public/fonts
+/public/images
+/public/mix-manifest.json
+/public/phpmyadmin
+/public/storage
+# /resources/views_old
+/app/Http/Controllers_old

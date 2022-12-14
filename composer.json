@@ -1,67 +1,85 @@
 {
-    "name": "laravel/laravel",
-    "type": "project",
-    "description": "The Laravel Framework.",
-    "keywords": [
-        "framework",
-        "laravel"
-    ],
-    "license": "MIT",
-    "require": {
-        "php": "^7.3|^8.0",
-        "doctrine/dbal": "^3.4",
-        "fideloper/proxy": "^4.4",
-        "fruitcake/laravel-cors": "^2.0",
-        "guzzlehttp/guzzle": "^7.0.1",
-        "laravel/breeze": "1.9.2",
-        "laravel/framework": "^9.19",
-        "laravel/tinker": "^2.5",
-        "pusher/pusher-php-server": "^5.0"
-    },
-    "require-dev": {
-        "barryvdh/laravel-debugbar": "^3.7",
+	"name": "laravel/laravel",
+	"type": "project",
+	"description": "The Laravel Framework.",
+	"keywords": [
+		"framework",
+		"laravel"
+	],
+	"license": "MIT",
+	"require": {
+		"php": "^8.1.10",
+		"barryvdh/laravel-dompdf": "^2.0",
+		"caryley/laravel-inventory": "^2.0",
+		"doctrine/dbal": "^3.4",
+		"graham-campbell/markdown": "14.0",
+		"guzzlehttp/guzzle": "^7.2",
+		"laravel/breeze": "1.9.2",
+		"laravel/framework": "^9.19",
+		"laravel/sanctum": "^2.14.1",
+		"laravel/tinker": "^2.7",
+		"laravel/ui": "^4.3",
+		"munafio/chatify": "^1.5",
+		"opcodesio/log-viewer": "^1.4",
+		"pragmarx/google2fa-laravel": "^2.0",
+		"pusher/pusher-php-server": "^7.2",
+		"silviolleite/laravelpwa": "^2.0",
+		"simplesoftwareio/simple-qrcode": "^4.2",
+		"spatie/laravel-ciphersweet": "^1.0"
+	},
+	"require-dev": {
+		"barryvdh/laravel-debugbar": "^3.7",
 		"barryvdh/laravel-ide-helper": "^2.12",
-        "spatie/laravel-ignition": "^1.0",
-        "fakerphp/faker": "^1.9.1",
-        "laravel/sail": "^1.0.1",
-        "mockery/mockery": "^1.4.2",
-        "nunomaduro/collision": "^6.1",
-        "phpunit/phpunit": "^9.3.3"
-    },
-    "config": {
-        "optimize-autoloader": true,
-        "preferred-install": "dist",
-        "sort-packages": true
-    },
-    "extra": {
-        "laravel": {
-            "dont-discover": []
-        }
-    },
-    "autoload": {
-        "psr-4": {
-            "App\\": "app/",
-            "Database\\Factories\\": "database/factories/",
-            "Database\\Seeders\\": "database/seeders/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Tests\\": "tests/"
-        }
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
-    "scripts": {
-        "post-autoload-dump": [
-            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover --ansi"
-        ],
-        "post-root-package-install": [
-            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
-        ],
-        "post-create-project-cmd": [
-            "@php artisan key:generate --ansi"
-        ]
-    }
+		"beyondcode/laravel-query-detector": "^1.6",
+		"fakerphp/faker": "^1.9.1",
+		"laravel/pint": "^1.2",
+		"laravel/sail": "^1.0.1",
+		"mockery/mockery": "^1.4.4",
+		"nunomaduro/collision": "^6.1",
+		"phpunit/phpunit": "^9.5.10",
+		"spatie/laravel-ignition": "^1.0"
+	},
+	"autoload": {
+		"psr-4": {
+			"App\\": "app/",
+			"Database\\Factories\\": "database/factories/",
+			"Database\\Seeders\\": "database/seeders/"
+		}
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"Tests\\": "tests/"
+		}
+	},
+	"scripts": {
+		"tests": "phpunit",
+		"post-autoload-dump": [
+			"Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+			"@php artisan package:discover --ansi"
+		],
+		"post-update-cmd": [
+			"@php artisan vendor:publish --tag=laravel-assets --ansi --force",
+			"@php artisan ide-helper:generate",
+			"@php artisan ide-helper:models",
+			"@php artisan ide-helper:meta"
+		],
+		"post-root-package-install": [
+			"@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+		],
+		"post-create-project-cmd": [
+			"@php artisan key:generate --ansi"
+		]
+	},
+	"extra": {
+		"laravel": {
+			"dont-discover": []
+		}
+	},
+	"config": {
+		"optimize-autoloader": true,
+		"preferred-install": "dist",
+		"sort-packages": true
+	},
+	"minimum-stability": "dev",
+	"prefer-stable": true
 }

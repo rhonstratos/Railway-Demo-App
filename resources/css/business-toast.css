@@ -1,0 +1,33 @@
+#business-toast {
+	top: -67px;
+	left: 50%;
+	opacity: 0;
+	font-size: 16px;
+	position: absolute;
+	transition: top, 0.5s;
+	transition: opacity, 0.5s;
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (min-width: 640px) {
+	#business-toast {
+		top: -37px;
+		left: auto;
+		right: 16px;
+	}
+
+	#business-toaster {
+		left: auto;
+	}
+}
+
+@media (min-width: 1366px) {
+	#business-toast {
+		font-size: 20px;
+	}
+}
+
+#business-toast.toast-show {
+	top: 16px;
+	opacity: 1;
+}

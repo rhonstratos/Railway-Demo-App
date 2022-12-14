@@ -1,0 +1,12 @@
+@font-face {
+  font-family: 'PlusJakartaSans-Light';
+  src: url('PlusJakartaSans-Light.eot');
+  src: url('PlusJakartaSans-Light.eot?#iefix') format('embedded-opentype'),
+       url('PlusJakartaSans-Light.svg#PlusJakartaSans-Light') format('svg'),
+       url('PlusJakartaSans-Light.ttf') format('truetype'),
+       url('PlusJakartaSans-Light.woff') format('woff'),
+       url('PlusJakartaSans-Light.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+

@@ -1,0 +1,82 @@
+@import "./app.css";
+@import "./master.css";
+@import "./business-toast.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+	.scrollbar::-webkit-scrollbar {
+		width: 20px;
+		height: 20px;
+	}
+
+	.scrollbar::-webkit-scrollbar-track {
+		border-radius: 100vh;
+		background: #f7f4ed;
+	}
+
+	.scrollbar::-webkit-scrollbar-thumb {
+		background: #e0cbcb;
+		border-radius: 100vh;
+		border: 3px solid #f6f7ed;
+	}
+
+	.scrollbar::-webkit-scrollbar-thumb:hover {
+		background: #c0a0b9;
+	}
+}
+
+@layer components {
+	.business-header {
+		@apply w-full pb-4 xl:pb-2 px-4 xl:basis-[58px] flex gap-1 flex-col xl:flex-row xl:justify-between xl:items-center bg-light;
+	}
+
+	.business-navmenu-items {
+		@apply h-fit py-2 my-[5px] 2xl:my-[12px] flex items-center hover:text-white dark:text-dirtywhite dark:hover:text-white text-[14px] rounded-[8px] ease-in-out duration-100;
+	}
+
+	.business-navmenu-iconbox {
+		@apply mx-[10px] p-[7px] grid place-content-center float-left bg-white dark:bg-black shadow-lg rounded-[8px];
+	}
+
+	.business-navmenu-icons {
+		@apply w-[20px] 2xl:w-[24px] h-[20px] 2xl:h-[24px];
+	}
+
+	.business-label-as-button {
+		@apply px-2 py-1 flex flex-row justify-center items-center text-white rounded-[4px] cursor-pointer;
+	}
+
+	.business-whitecard-bg {
+		@apply px-4 py-4 flex flex-col gap-2 bg-white rounded-[8px] shadow-lg;
+	}
+
+	.business-input-textbox {
+		@apply px-2 py-1 text-[14px] 2xl:text-[16px] bg-dirtywhite border-none rounded-[4px];
+	}
+
+	.business-modalbg {
+		@apply h-[calc(100vh_-_43px)] sm:h-screen w-screen sm:pl-[45px] xl:pl-[390px] absolute top-0 left-0 hidden justify-center items-center bg-[rgba(0,0,0,0.1)] text-[14px] 2xl:text-[16px];
+	}
+
+	.business-modal1 {
+		@apply w-[95%] max-w-[578px] px-4 py-4 flex flex-col gap-2 bg-white rounded-[8px] shadow-lg;
+	}
+
+	.business-close-button {
+		@apply px-2 py-1 flex flex-row gap-1 justify-center items-center cursor-pointer;
+	}
+	.business-modalbg {
+		@apply h-[calc(100vh_-_43px)] sm:h-screen w-screen sm:pl-[45px] xl:pl-[390px] absolute top-0 left-0 hidden justify-center items-center bg-[rgba(0,0,0,0.1)] text-[14px] 2xl:text-[16px];
+	}
+
+	.business-modal1 {
+		@apply w-[95%] max-w-[578px] px-4 py-4 flex flex-col gap-2 bg-white rounded-[8px] shadow-lg;
+	}
+
+	.business-close-button {
+		@apply px-2 py-1 flex flex-row gap-1 justify-center items-center cursor-pointer;
+	}
+}

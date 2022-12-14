@@ -1,0 +1,553 @@
+
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+
+
+
+/*Error toast*/
+#toast-error {
+	visibility: hidden;
+	max-width: 50px;
+	height: 50px;
+	margin: auto;
+	background-color: #fff;
+	color: #344767;
+	text-align: center;
+	border-radius: 0.5rem;
+	position: fixed;
+	z-index: 1;
+	left: 0;
+	right: 0;
+	bottom: 60px;
+	font-size: 1.3rem;
+	white-space: nowrap;
+	overflow: hidden;
+	box-shadow: 0 2rem 3rem rgba(132, 139, 200, 0.18);
+}
+
+#toast-error #img {
+	width: 50px;
+	height: 50px;
+	float: left;
+	padding-top: 13px;
+	padding-bottom: 13px;
+	border-radius: 0.5rem;
+	box-sizing: border-box;
+	background-color: #fff;
+	color: #344767;
+}
+
+#toast-error #desc {
+	color: #344767;
+	padding: 16px;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+#toast-error.show {
+	visibility: visible;
+	-webkit-animation: fadein 0.5s, expand 0.5s 0.5s, stay 3s 1s, shrink 0.5s 2s,
+		fadeout 0.5s 2.5s;
+	animation: fadein 0.5s, expand 0.5s 0.5s, stay 3s 1s, shrink 0.5s 4s,
+		fadeout 0.5s 4.5s;
+}
+
+/*Sucess toast*/
+#toast {
+	visibility: hidden;
+	max-width: 50px;
+	height: 50px;
+	margin: auto;
+	background-color: #fff;
+	color: #344767;
+	text-align: center;
+	border-radius: 0.5rem;
+	position: fixed;
+	z-index: 1;
+	left: 0;
+	right: 0;
+	bottom: 60px;
+	font-size: 1.3rem;
+	white-space: nowrap;
+	overflow: hidden;
+	box-shadow: 0 2rem 3rem rgba(132, 139, 200, 0.18);
+}
+
+#toast #img {
+	width: 50px;
+	height: 50px;
+	float: left;
+	padding-top: 13px;
+	padding-bottom: 13px;
+	border-radius: 0.5rem;
+	box-sizing: border-box;
+	background-color: #fff;
+	color: #344767;
+}
+
+#toast #desc {
+	color: #344767;
+	padding: 16px;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+#toast.show {
+	visibility: visible;
+	-webkit-animation: fadein 0.5s, expand 0.5s 0.5s, stay 3s 1s, shrink 0.5s 2s,
+		fadeout 0.5s 2.5s;
+	animation: fadein 0.5s, expand 0.5s 0.5s, stay 3s 1s, shrink 0.5s 4s,
+		fadeout 0.5s 4.5s;
+}
+
+/* customer css */
+
+
+.box {
+	display: flex;
+	align-items: center;
+	gap: 1.5rem;
+	padding: 2rem 1rem;
+	margin-top: 1rem;
+	margin-bottom: 5rem;
+	background-color: #fff;
+	border-radius: 2rem;
+	box-shadow: 0 2rem 3rem rgba(132, 139, 200, 0.18);
+	transition: all 300ms ease;
+}
+
+.header-1 {
+	box-shadow: 0 2rem 3rem rgba(132, 139, 200, 0.11);
+}
+
+.box-2 {
+	background-color: #fff;
+	border-radius: 2rem;
+	box-shadow: 0 2rem 3rem rgba(132, 139, 200, 0.18);
+	transition: all 300ms ease;
+}
+
+/*Product Details Image Switcher*/
+
+
+
+/*FAQs*/
+
+.faq .row .accordion-container .accordion .accordion-header {
+	box-shadow: .1rem .1rem .3rem rgba(0, 0, 0, .3);
+}
+
+.faq .row .accordion-container .accordion .accordion-header span {
+
+	clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
+}
+
+
+.faq .row .accordion-container .accordion .accordion-body {
+	box-shadow: .1rem .1rem .3rem rgba(0, 0, 0, .3);
+	transition: all .2s linear;
+}
+
+.faq .row .accordion-container .accordion:nth-child(1) .accordion-body {
+	display: block;
+}
+
+
+/*About Us Tab*/
+
+
+
+.tabpanel.active {
+	animation-duration: 300ms;
+	animation-name: panelswitch;
+	animation-timing-function: ease-in;
+	display: block;
+}
+
+/* Animations of Switch Tab in About Us*/
+
+@keyframes panelswitch {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+
+/*Table Responsiveness*/
+
+@media screen and (max-width: 600px) {
+
+	table.mobiletable td {
+		display: block;
+		font-size: .8em;
+		text-align: right;
+	}
+
+	table.mobiletable td::before {
+		content: attr(data-label);
+		float: left;
+		font-weight: bold;
+		text-transform: uppercase;
+	}
+
+	table.mobiletable td:last-child {
+		border-bottom: 0;
+	}
+}
+
+
+.mobile-nav {
+	box-shadow: 0 0 15px hsla(0, 0%, 0%, 0.2);
+}
+
+
+
+
+
+
+.product-name {
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+}
+
+.ellipsis-overflow {
+	display: -webkit-box;
+	-webkit-line-clamp: 1;
+	-webkit-box-orient: vertical;
+}
+
+
+.horizontal-scroll {
+	width: 100%;
+	height: 180px;
+	-webkit-animation: backgroundScroll 400s linear infinite;
+	animation: backgroundScroll 60s linear infinite;
+	background-repeat: no-repeat;
+}
+
+@-webkit-keyframes backgroundScroll {
+	from {
+		background-position: 0 0;
+	}
+
+	to {
+		background-position: -600px 0;
+	}
+}
+
+@keyframes backgroundScroll {
+	from {
+		background-position: 0 0;
+	}
+
+	to {
+		background-position: -2000px 0;
+	}
+}
+
+.horizontal-scroll2 {
+	width: 100%;
+	height: 180px;
+	-webkit-animation: backgroundScroll2 400s linear infinite;
+	animation: backgroundScroll2 30s linear infinite;
+	background-repeat: no-repeat;
+}
+
+@-webkit-keyframes backgroundScroll2 {
+	from {
+		background-position: -1000px 0;
+	}
+
+	to {
+		background-position: 0 0;
+	}
+}
+
+@keyframes backgroundScroll2 {
+	from {
+		background-position: -2000px 0;
+	}
+
+	to {
+		background-position: 0 0;
+	}
+}
+
+
+
+/* cide */
+.rate-star {
+	display: block;
+	position: relative;
+	margin: 9px;
+	margin-top: 1.5rem;
+	padding: 16px;
+	border: 1.3px solid var(--secondary);
+	border-radius: 3px;
+	/* box-shadow: 1px 1.5px 3px rgba(102, 100, 100, 0.658); */
+}
+
+.rate-star>.label-name {
+	position: absolute;
+	top: -0.6rem;
+	left: 0.6rem;
+	font-weight: bold;
+	background-color: white;
+}
+
+/* .fa-star { font-size: 64px; } */
+
+.star-rate,
+.star-rate * {
+	transition: 0.3s ease all;
+}
+
+.star-rate {
+	display: inline-block;
+	position: relative;
+	width: 100px;
+}
+
+
+
+.image-hover-text:hover {
+	opacity: 1;
+}
+
+#partitioned {
+	padding-left: 15px;
+	letter-spacing: 42px;
+	border: 0;
+	background-image: linear-gradient(to left, gray 70%, rgba(255, 255, 255, 0) 0%);
+	background-position: bottom;
+	background-size: 50px 1px;
+	background-repeat: repeat-x;
+	background-position-x: 35px;
+	width: 220px;
+	min-width: 220px;
+}
+
+@-webkit-keyframes fadein {
+	from {
+		bottom: 0;
+		opacity: 0;
+	}
+
+	to {
+		bottom: 60px;
+		opacity: 1;
+	}
+}
+
+@keyframes fadein {
+	from {
+		bottom: 0;
+		opacity: 0;
+	}
+
+	to {
+		bottom: 60px;
+		opacity: 1;
+	}
+}
+
+@-webkit-keyframes expand {
+	from {
+		min-width: 50px
+	}
+
+	to {
+		min-width: 350px
+	}
+}
+
+@keyframes expand {
+	from {
+		min-width: 50px
+	}
+
+	to {
+		min-width: 350px
+	}
+}
+
+@-webkit-keyframes stay {
+	from {
+		min-width: 350px
+	}
+
+	to {
+		min-width: 350px
+	}
+}
+
+@keyframes stay {
+	from {
+		min-width: 350px
+	}
+
+	to {
+		min-width: 350px
+	}
+}
+
+@-webkit-keyframes shrink {
+	from {
+		min-width: 350px;
+	}
+
+	to {
+		min-width: 50px;
+	}
+}
+
+@keyframes shrink {
+	from {
+		min-width: 350px;
+	}
+
+	to {
+		min-width: 50px;
+	}
+}
+
+@-webkit-keyframes fadeout {
+	from {
+		bottom: 60px;
+		opacity: 1;
+	}
+
+	to {
+		bottom: 90px;
+		opacity: 0;
+	}
+}
+
+@keyframes fadeout {
+	from {
+		bottom: 60px;
+		opacity: 1;
+	}
+
+	to {
+		bottom: 90px;
+		opacity: 0;
+	}
+}
+
+
+
+
+
+.dialog {
+--backdrop: rgba(0,0,0,0);
+overflow: hidden;
+position: fixed;
+z-index: 1000;
+top: 0;
+left: 0;
+width: 100vw;
+height: 100vh;
+background-color:  var(--backdrop);
+visibility: hidden;
+transition: all 0.2s;
+}
+
+.dialog--right .dialog__body {
+right: 0;
+left: auto;
+transform: translateX(100%);
+}
+
+.dialog--open {
+--backdrop: rgba(0, 0, 0, .5);
+backdrop-filter: blur(5px);
+visibility: visible;
+}
+
+.dialog--open .dialog__body {
+transform: translateX(0);
+}
+
+.dialog__body {
+position: absolute;
+top: 0;
+left: 0;
+width: 20.5vw;
+height: 100vh;
+background-color: #fff;
+display: flex;
+flex-flow: column nowrap;
+overflow: hidden auto;
+transform: translateX(-100%);
+transition: transform 0.2s;
+}
+
+@media (min-width: 500px) {
+.dialog__body {
+ min-width: 200px;
+	}
+}
+
+@media (max-width: 500px) {
+.dialog__body {
+ width: 72vw;
+	}
+}
+
+.dialog__header {
+display: flex;
+align-items: center;
+justify-content: space-between;
+position: sticky;
+top: 0;
+background-color: #fff;
+border-bottom: 1px solid #ccc;
+padding: 5px 15px;
+margin: 0 -10px;
+}
+
+.dialog__header > * {
+margin: 0 10px;
+}
+
+.dialog__content {
+flex: 1 0 0;
+padding: 15px;
+line-height: 1.25;
+}
+
+.dialog__close {
+border: 0;
+background-color: transparent;
+width: 40px;
+height: 40px;
+border-radius: 25px;
+display: flex;
+align-items: center;
+justify-content: center;
+cursor: pointer;
+outline: none;
+transition: all 0.2s;
+padding: 0;
+}
+
+.dialog__close > * {
+max-width: 100%;
+}
+
+.dialog__close:hover {
+background-color: #ccc;
+}
+
+

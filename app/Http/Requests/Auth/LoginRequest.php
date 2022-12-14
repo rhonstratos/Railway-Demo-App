@@ -2,12 +2,15 @@
 
 namespace App\Http\Requests\Auth;
 
+use App\Models\User as UserModel;
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
+use ParagonIE\CipherSweet\Exception\BlindIndexNotFoundException;
 
 class LoginRequest extends FormRequest
 {
@@ -45,15 +48,32 @@ class LoginRequest extends FormRequest
     {
         $this->ensureIsNotRateLimited();
 
-        if (! Auth::attempt($this->only('email', 'password'), $this->boolean('remember'))) {
-            RateLimiter::hit($this->throttleKey());
+        try {
+            $userInfo = UserModel::whereBlind('email', 'email_index', (string) $this->email)->first();
 
+            //if (! Auth::attempt($this->only('email', 'password'), $this->boolean('remember'))){
+            if (! $userInfo) {
+                RateLimiter::hit($this->throttleKey());
+                throw ValidationException::withMessages([
+                    'email' => trans('auth.failed'),
+                ]);
+            } else {
+                if (Hash::check((string) $this->password, $userInfo->password)) {
+                    Auth::loginUsingId($userInfo->id, $this->boolean('remember'));
+                } else {
+                    RateLimiter::hit($this->throttleKey());
+                    throw ValidationException::withMessages([
+                        'password' => trans('auth.failed'),
+                    ]);
+                }
+            }
+            RateLimiter::clear($this->throttleKey());
+        } catch (BlindIndexNotFoundException $th) {
+            RateLimiter::hit($this->throttleKey());
             throw ValidationException::withMessages([
                 'email' => trans('auth.failed'),
             ]);
         }
-
-        RateLimiter::clear($this->throttleKey());
     }
 
     /**

@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User as UserModel;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
@@ -39,11 +41,22 @@ class NewPasswordController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
+        $userInfo = UserModel::whereBlind('email', 'email_index', (string) $request->email)->first();
+        $id = $userInfo->id;
+        $user = DB::table('users')->where('id', '=', $id)->first();
+        $user->email;
+
         // Here we will attempt to reset the user's password. If it is successful we
         // will update the password on an actual user model and persist it to the
         // database. Otherwise we will parse the error and return the response.
         $status = Password::reset(
-            $request->only('email', 'password', 'password_confirmation', 'token'),
+            //$request->only('email', 'password', 'password_confirmation', 'token'),
+            [
+                'email' => $user->email,
+                'password' => $request->password,
+                'password_confirmation' => $request->password_confirmation,
+                'token' => $request->token,
+            ],
             function ($user) use ($request) {
                 $user->forceFill([
                     'password' => Hash::make($request->password),
