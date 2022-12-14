@@ -31,3 +31,7 @@ import
 /public/storage
 # /resources/views_old
 /app/Http/Controllers_old
+/_ide_helper_models.php
+/_ide_helper.php
+/.phpstorm.meta.php
+/composer.lock
