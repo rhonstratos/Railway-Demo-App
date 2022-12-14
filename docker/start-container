@@ -10,7 +10,7 @@ fi
 
 npm install
 composer install
-php artisan migrate
+php artisan migrate:fresh --seed
 chmod -R ugo+rw /.composer
 
 if [ ! -z "$PORT" ]; then
@@ -27,3 +27,8 @@ if [ $# -gt 0 ];then
 else
     /usr/bin/supervisord
 fi
+
+php artisan optimize
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
